@@ -35,9 +35,9 @@ namespace Lab1
 
         private void DrawForm()
         {
-            Bitmap bm = new Bitmap(MainScreen.ClientSize.Width, MainScreen.ClientSize.Height);
+            Bitmap bm = new Bitmap(MainScreen.Width, MainScreen.Height);
             painter.ReDraw(bm, InputMatrix, AdjacencyMatrix);
-            MainScreen.BackgroundImage = bm;
+            MainScreen.Image = bm;
         }
 
         private void LoadData()

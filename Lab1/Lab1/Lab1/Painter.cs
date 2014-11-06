@@ -45,15 +45,22 @@ namespace Lab1
         {
             Graphics g = Graphics.FromImage(bm);
 
+            g.FillRectangle(Brushes.Red, 0, 0, 200, 10);
+            g.FillRectangle(Brushes.White, 0, 11, 200, 10);
+
+            g.DrawLine(
+                            new Pen(Color.DarkGray, 2.0f),
+                            new Point(1, 1),
+                            new Point(40, 40));
             for (int i = 0; i < adjacencyMatrix.RowSize-1; i++)
             {
                 for (int j = i + 1; j < adjacencyMatrix.ColSize; j++)
                 {
                     if (adjacencyMatrix[i, j] == 1)
                         g.DrawLine(
-                            new Pen(Color.Red, 2),
-                            new Point(XFromDec(printedMatrix[i, 0]), YFromDec(printedMatrix[i, 1])),
-                            new Point(XFromDec(printedMatrix[j, 0]), YFromDec(printedMatrix[j, 1])));
+                            new Pen(Color.DarkGray, 2.0f),
+                            new Point(XFromDec(printedMatrix[0, i]), YFromDec(printedMatrix[1, i])),
+                            new Point(XFromDec(printedMatrix[0, j]), YFromDec(printedMatrix[1, j])));
                 }
             }
         }
