@@ -1,0 +1,8 @@
+C:\Users\Илья\Documents\Visual Studio 2012\Projects\MatrixTest\MatrixTest\bin\Release\MatrixTest.exe.config
+C:\Users\Илья\Documents\Visual Studio 2012\Projects\MatrixTest\MatrixTest\bin\Release\MatrixTest.exe
+C:\Users\Илья\Documents\Visual Studio 2012\Projects\MatrixTest\MatrixTest\bin\Release\MatrixTest.pdb
+C:\Users\Илья\Documents\Visual Studio 2012\Projects\MatrixTest\MatrixTest\bin\Release\Matrix.dll
+C:\Users\Илья\Documents\Visual Studio 2012\Projects\MatrixTest\MatrixTest\bin\Release\Matrix.pdb
+C:\Users\Илья\Documents\Visual Studio 2012\Projects\MatrixTest\MatrixTest\obj\Release\MatrixTest.csprojResolveAssemblyReference.cache
+C:\Users\Илья\Documents\Visual Studio 2012\Projects\MatrixTest\MatrixTest\obj\Release\MatrixTest.exe
+C:\Users\Илья\Documents\Visual Studio 2012\Projects\MatrixTest\MatrixTest\obj\Release\MatrixTest.pdb
