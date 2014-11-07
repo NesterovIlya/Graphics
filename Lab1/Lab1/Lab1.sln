@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1", "Lab1\Lab1.csproj", "{F94ED74F-1062-442A-B269-EC1EBAB0D9DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XOGame", "C:\Users\Илья\Documents\Visual Studio 2012\Projects\LAB2\XOGame\XOGame.csproj", "{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixLib", "..\Matrix\Matrix\MatrixLib.csproj", "{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +25,16 @@ Global
 		{F94ED74F-1062-442A-B269-EC1EBAB0D9DD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F94ED74F-1062-442A-B269-EC1EBAB0D9DD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F94ED74F-1062-442A-B269-EC1EBAB0D9DD}.Release|x86.ActiveCfg = Release|Any CPU
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Debug|x86.ActiveCfg = Debug|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Debug|x86.Build.0 = Debug|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Release|Any CPU.ActiveCfg = Release|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Release|Mixed Platforms.Build.0 = Release|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Release|x86.ActiveCfg = Release|x86
-		{B6FDED92-CD71-4DD0-92ED-BBE86B913E96}.Release|x86.Build.0 = Release|x86
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7C4D8B3C-1381-48AB-BC56-F78B2655F78D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

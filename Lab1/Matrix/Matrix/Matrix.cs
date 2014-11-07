@@ -66,7 +66,7 @@ namespace MatrixLib
             for (int i = 0; i < RowSize; i++)
                 for (int j = 0; j < ColSize; j++)
                 {
-                    Cell[i, j] = list[i*RowSize + j];
+                    Cell[i, j] = list[i*ColSize + j];
                 }
         }
 
@@ -163,48 +163,48 @@ namespace MatrixLib
         public void Transfer(Double x, Double y)
         {
             Matrix transferMatrix = Matrix.IdentityMatrix(3);
-            transferMatrix[1, 3] = x;
-            transferMatrix[2, 3] = y;
+            transferMatrix[0, 2] = x;
+            transferMatrix[1, 2] = y;
             matrix = matrix*transferMatrix;
         }
 
         public void Rotate(Double angle)
         {
             Matrix rotateMatrix = Matrix.IdentityMatrix(3);
+            rotateMatrix[0, 0] = Math.Cos(angle);
+            rotateMatrix[0, 1] = -Math.Sin(angle);
+            rotateMatrix[1, 0] = Math.Sin(angle);
             rotateMatrix[1, 1] = Math.Cos(angle);
-            rotateMatrix[1, 2] = -Math.Sin(angle);
-            rotateMatrix[2, 1] = Math.Sin(angle);
-            rotateMatrix[2, 2] = Math.Cos(angle);
             matrix = matrix * rotateMatrix;
         }
 
         public void Scale(Double x, Double y)
         {
             Matrix scaleMatrix = Matrix.IdentityMatrix(3);
-            scaleMatrix[1, 1] = x;
-            scaleMatrix[2, 2] = y;
+            scaleMatrix[0, 0] = x;
+            scaleMatrix[1, 1] = y;
             matrix = matrix * scaleMatrix;
         }
 
         public void XReflect()
         {
             Matrix xReflectMatrix = Matrix.IdentityMatrix(3);
-            xReflectMatrix[2, 2] = -1;
+            xReflectMatrix[1, 1] = -1;
             matrix = matrix * xReflectMatrix;
         }
 
         public void YReflect()
         {
             Matrix yReflectMatrix = Matrix.IdentityMatrix(3);
-            yReflectMatrix[1, 1] = -1;
+            yReflectMatrix[0, 0] = -1;
             matrix = matrix * yReflectMatrix;
         }
 
         public void CReflect()
         {
             Matrix cReflectMatrix = Matrix.IdentityMatrix(3);
+            cReflectMatrix[0, 0] = -1;
             cReflectMatrix[1, 1] = -1;
-            cReflectMatrix[2, 2] = -1;
             matrix = matrix * cReflectMatrix;
         }
     }

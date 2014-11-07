@@ -32,8 +32,8 @@
             this.readDataButton = new System.Windows.Forms.Button();
             this.AxisButton = new System.Windows.Forms.Button();
             this.DrawButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.turnLeftbutton = new System.Windows.Forms.Button();
+            this.turnRightbutton = new System.Windows.Forms.Button();
             this.viewCoordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MainScreen)).BeginInit();
@@ -71,6 +71,7 @@
             this.AxisButton.TabIndex = 2;
             this.AxisButton.Text = "Показать/скрыть оси";
             this.AxisButton.UseVisualStyleBackColor = true;
+            this.AxisButton.Click += new System.EventHandler(this.AxisButton_Click);
             // 
             // DrawButton
             // 
@@ -82,23 +83,25 @@
             this.DrawButton.UseVisualStyleBackColor = true;
             this.DrawButton.Click += new System.EventHandler(this.DrawButton_Click);
             // 
-            // button4
+            // turnLeftbutton
             // 
-            this.button4.Location = new System.Drawing.Point(12, 156);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(112, 42);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.turnLeftbutton.Location = new System.Drawing.Point(12, 156);
+            this.turnLeftbutton.Name = "turnLeftbutton";
+            this.turnLeftbutton.Size = new System.Drawing.Size(112, 42);
+            this.turnLeftbutton.TabIndex = 4;
+            this.turnLeftbutton.Text = "Повернуть влево";
+            this.turnLeftbutton.UseVisualStyleBackColor = true;
+            this.turnLeftbutton.Click += new System.EventHandler(this.turnLeftbutton_Click);
             // 
-            // button5
+            // turnRightbutton
             // 
-            this.button5.Location = new System.Drawing.Point(12, 204);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(112, 42);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.turnRightbutton.Location = new System.Drawing.Point(12, 204);
+            this.turnRightbutton.Name = "turnRightbutton";
+            this.turnRightbutton.Size = new System.Drawing.Size(112, 42);
+            this.turnRightbutton.TabIndex = 5;
+            this.turnRightbutton.Text = "Повернуть вправо";
+            this.turnRightbutton.UseVisualStyleBackColor = true;
+            this.turnRightbutton.Click += new System.EventHandler(this.turnRightbutton_Click);
             // 
             // viewCoordTextBox
             // 
@@ -132,8 +135,8 @@
             this.ClientSize = new System.Drawing.Size(928, 592);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.viewCoordTextBox);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.turnRightbutton);
+            this.Controls.Add(this.turnLeftbutton);
             this.Controls.Add(this.DrawButton);
             this.Controls.Add(this.AxisButton);
             this.Controls.Add(this.readDataButton);
@@ -142,6 +145,7 @@
             this.Name = "Form1";
             this.Text = "Лабораторная работа 1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.MainScreen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -154,8 +158,8 @@
         private System.Windows.Forms.Button readDataButton;
         private System.Windows.Forms.Button AxisButton;
         private System.Windows.Forms.Button DrawButton;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button turnLeftbutton;
+        private System.Windows.Forms.Button turnRightbutton;
         private System.Windows.Forms.TextBox viewCoordTextBox;
         private System.Windows.Forms.Label label1;
     }

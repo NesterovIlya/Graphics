@@ -15,6 +15,7 @@ namespace Lab1
     {
 
         Matrix InputMatrix;
+        Matrix CurrentMatrix;
         Matrix AdjacencyMatrix;
         Painter painter;
 
@@ -25,7 +26,7 @@ namespace Lab1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            painter = new Painter(10,10,10,10,MainScreen.ClientSize.Width,MainScreen.ClientSize.Height);
+            painter = new Painter(-20,20,-20,20,MainScreen.ClientSize.Width,MainScreen.ClientSize.Height);
         }
 
         private void readDataButton_Click(object sender, EventArgs e)
@@ -33,11 +34,19 @@ namespace Lab1
             LoadData();
         }
 
-        private void DrawForm()
+        private void DrawForm(Matrix printedMatrix)
         {
             Bitmap bm = new Bitmap(MainScreen.Width, MainScreen.Height);
-            painter.ReDraw(bm, InputMatrix, AdjacencyMatrix);
+            painter.ReDraw(bm, printedMatrix, AdjacencyMatrix);
             MainScreen.Image = bm;
+        }
+
+        private void ShowAxis()
+        {
+            Bitmap bm = new Bitmap(MainScreen.Width, MainScreen.Height);
+            painter.DrawAxis(bm);
+            MainScreen.BackgroundImage = bm;
+
         }
 
         private void LoadData()
@@ -59,8 +68,9 @@ namespace Lab1
             }
             try
             {
-                InputMatrix = new Matrix(3, 3, rez1);
-                AdjacencyMatrix = new Matrix(3, 3, rez2);
+                InputMatrix = new Matrix(3, 32, rez1);
+                AdjacencyMatrix = new Matrix(2, 32, rez2);
+                CurrentMatrix = new Matrix(InputMatrix);
                 for (int i=0;i<InputMatrix.RowSize;i++)
                 {
                     string str = "";
@@ -77,7 +87,47 @@ namespace Lab1
 
         private void DrawButton_Click(object sender, EventArgs e)
         {
-            DrawForm();
+            Affine3DimMatrixBuilder builder = new Affine3DimMatrixBuilder();
+            //builder.Transfer(0,5);
+            Matrix affineMatrix = builder.GetAffineMatrix();
+            CurrentMatrix = affineMatrix * InputMatrix;
+            DrawForm(CurrentMatrix);
         }
+
+        private void AxisButton_Click(object sender, EventArgs e)
+        {
+            ShowAxis();
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            painter.ChangeWindowSize(MainScreen.Width, MainScreen.Height);
+            ShowAxis();
+        }
+
+        private void turnLeftbutton_Click(object sender, EventArgs e)
+        {
+            Affine3DimMatrixBuilder builder = new Affine3DimMatrixBuilder();
+            builder.Transfer(0, -2);
+            builder.Rotate(Math.PI/4);
+            builder.Transfer(0, 2);
+            Matrix affineMatrix = builder.GetAffineMatrix();
+            CurrentMatrix = affineMatrix * CurrentMatrix;
+            DrawForm(CurrentMatrix);
+        }
+
+        private void turnRightbutton_Click(object sender, EventArgs e)
+        {
+            Affine3DimMatrixBuilder builder = new Affine3DimMatrixBuilder();
+            //builder.Transfer(0, -2);
+            builder.Rotate(-Math.PI / 4);
+           // builder.Transfer(0, 2);
+            Matrix affineMatrix = builder.GetAffineMatrix();
+            CurrentMatrix = affineMatrix * CurrentMatrix;
+            DrawForm(CurrentMatrix);
+        }
+
+
+        //private void 
     }
 }

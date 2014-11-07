@@ -1,0 +1,11 @@
+D:\Works\Graphics\Lab1\Lab1\Lab1\bin\Release\Lab1.exe.config
+D:\Works\Graphics\Lab1\Lab1\Lab1\bin\Release\Matrix.dll
+D:\Works\Graphics\Lab1\Lab1\Lab1\bin\Release\Matrix.pdb
+D:\Works\Graphics\Lab1\Lab1\Lab1\obj\Release\Lab1.csprojResolveAssemblyReference.cache
+D:\Works\Graphics\Lab1\Lab1\Lab1\obj\Release\Lab1.Form1.resources
+D:\Works\Graphics\Lab1\Lab1\Lab1\obj\Release\Lab1.Properties.Resources.resources
+D:\Works\Graphics\Lab1\Lab1\Lab1\obj\Release\Lab1.csproj.GenerateResource.Cache
+D:\Works\Graphics\Lab1\Lab1\Lab1\obj\Release\Lab1.exe
+D:\Works\Graphics\Lab1\Lab1\Lab1\obj\Release\Lab1.pdb
+D:\Works\Graphics\Lab1\Lab1\Lab1\bin\Release\Lab1.exe
+D:\Works\Graphics\Lab1\Lab1\Lab1\bin\Release\Lab1.pdb

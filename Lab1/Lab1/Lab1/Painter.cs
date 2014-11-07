@@ -16,9 +16,6 @@ namespace Lab1
         private double T;
         private int WindowSizeX;
         private int WindowSizeY;
-        /*private Matrix InputMatrix;
-        private Matrix AffineMatrix;
-        private Matrix AdjacencyMatrix;*/
 
 
         public Painter(double L, double R, double B, double T, int windowSizeX, int windowSizeY)
@@ -27,6 +24,12 @@ namespace Lab1
             this.R = R;
             this.B = B;
             this.T = T;
+            this.WindowSizeX = windowSizeX;
+            this.WindowSizeY = windowSizeY;
+        }
+
+        public void ChangeWindowSize(int windowSizeX, int windowSizeY)
+        {
             this.WindowSizeX = windowSizeX;
             this.WindowSizeY = windowSizeY;
         }
@@ -45,24 +48,26 @@ namespace Lab1
         {
             Graphics g = Graphics.FromImage(bm);
 
-            g.FillRectangle(Brushes.Red, 0, 0, 200, 10);
-            g.FillRectangle(Brushes.White, 0, 11, 200, 10);
-
-            g.DrawLine(
-                            new Pen(Color.DarkGray, 2.0f),
-                            new Point(1, 1),
-                            new Point(40, 40));
-            for (int i = 0; i < adjacencyMatrix.RowSize-1; i++)
+            for (int i = 0; i < adjacencyMatrix.ColSize; i++)
             {
-                for (int j = i + 1; j < adjacencyMatrix.ColSize; j++)
-                {
-                    if (adjacencyMatrix[i, j] == 1)
-                        g.DrawLine(
-                            new Pen(Color.DarkGray, 2.0f),
-                            new Point(XFromDec(printedMatrix[0, i]), YFromDec(printedMatrix[1, i])),
-                            new Point(XFromDec(printedMatrix[0, j]), YFromDec(printedMatrix[1, j])));
-                }
+                g.DrawLine(
+                           new Pen(Color.Red, 3.0f),
+                           new Point(XFromDec(printedMatrix[0, (int)adjacencyMatrix[0, i]-1]), YFromDec(printedMatrix[1, (int)adjacencyMatrix[0, i]-1])),
+                           new Point(XFromDec(printedMatrix[0, (int)adjacencyMatrix[1, i]-1]), YFromDec(printedMatrix[1, (int)adjacencyMatrix[1, i]-1])));
             }
+        }
+
+        public void DrawAxis(Bitmap bm)
+        {
+            Graphics g = Graphics.FromImage(bm);
+            g.DrawLine(
+                            new Pen(Color.Black, 1.0f),
+                            new Point(WindowSizeX/2,0),
+                            new Point(WindowSizeX/2,WindowSizeY));
+            g.DrawLine(
+                            new Pen(Color.Black, 1.0f),
+                            new Point(0,WindowSizeY/2),
+                            new Point(WindowSizeX,WindowSizeY/2));
         }
 
     }
