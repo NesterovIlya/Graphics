@@ -208,4 +208,128 @@ namespace MatrixLib
             matrix = matrix * cReflectMatrix;
         }
     }
+
+    public class Affine4DimMatrixBuilder
+    {
+
+        private Matrix matrix;
+
+        public Affine4DimMatrixBuilder()
+        {
+            matrix = Matrix.IdentityMatrix(4);
+        }
+
+        public void newAffineMatrix()
+        {
+            matrix = Matrix.IdentityMatrix(4);
+        }
+
+        public Matrix GetAffineMatrix()
+        {
+            return matrix;
+        }
+
+        public void Transfer(Double x, Double y, Double z)
+        {
+            Matrix transferMatrix = Matrix.IdentityMatrix(4);
+            transferMatrix[0, 2] = x;
+            transferMatrix[1, 2] = y;
+			transferMatrix[2, 2] = z;
+            matrix = matrix*transferMatrix;
+        }
+
+        public void RotateOX(Double angle)
+        {
+            Matrix rotateMatrixOX = Matrix.IdentityMatrix(4);
+            rotateMatrixOX[1, 1] = Math.Cos(angle);
+            rotateMatrixOX[1, 2] = -Math.Sin(angle);
+            rotateMatrixOX[2, 1] = Math.Sin(angle);
+            rotateMatrixOX[2, 2] = Math.Cos(angle);
+            matrix = matrix * rotateMatrixOX;
+        }
+		
+		public void RotateOY(Double angle)
+        {
+            Matrix rotateMatrixOY = Matrix.IdentityMatrix(4);
+            rotateMatrixOY[0, 0] = Math.Cos(angle);
+            rotateMatrixOY[0, 2] = Math.Sin(angle);
+            rotateMatrixOY[2, 0] = -Math.Sin(angle);
+            rotateMatrixOY[2, 2] = Math.Cos(angle);
+            matrix = matrix * rotateMatrixOY;
+        }
+
+		public void RotateOZ(Double angle)
+        {
+            Matrix rotateMatrixOZ = Matrix.IdentityMatrix(4);
+            rotateMatrixOZ[0, 0] = Math.Cos(angle);
+            rotateMatrixOZ[0, 1] = -Math.Sin(angle);
+            rotateMatrixOZ[1, 0] = Math.Sin(angle);
+            rotateMatrixOZ[1, 1] = Math.Cos(angle);
+            matrix = matrix * rotateMatrixOZ;
+        }
+		
+        public void Scale(Double x, Double y, Double z)
+        {
+            Matrix scaleMatrix = Matrix.IdentityMatrix(4);
+            scaleMatrix[0, 0] = x;
+            scaleMatrix[1, 1] = y;
+			scaleMatrix[2, 2] = z;
+            matrix = matrix * scaleMatrix;
+        }
+
+        public void YOZReflect()
+        {
+            Matrix yozReflectMatrix = Matrix.IdentityMatrix(4);
+            yozReflectMatrix[0, 0] = -1;
+            matrix = matrix * yozReflectMatrix;
+        }
+		
+		public void ZOXReflect()
+        {
+            Matrix zoxReflectMatrix = Matrix.IdentityMatrix(4);
+            zoxReflectMatrix[1, 1] = -1;
+            matrix = matrix * zoxReflectMatrix;
+        }
+
+		public void XOYReflect()
+        {
+            Matrix xoyReflectMatrix = Matrix.IdentityMatrix(4);
+            xoyReflectMatrix[2, 2] = -1;
+            matrix = matrix * xoyReflectMatrix;
+        }
+		
+		public void OXReflect()
+        {
+            Matrix oxReflectMatrix = Matrix.IdentityMatrix(4);
+            oxReflectMatrix[1, 1] = -1;
+			oxReflectMatrix[2, 2] = -1;
+            matrix = matrix * oxReflectMatrix;
+        }
+		
+		public void OYReflect()
+        {
+            Matrix oyReflectMatrix = Matrix.IdentityMatrix(4);
+            oyReflectMatrix[0, 0] = -1;
+			oyReflectMatrix[2, 2] = -1;
+            matrix = matrix * oyReflectMatrix;
+        }
+		
+		public void OZReflect()
+        {
+            Matrix ozReflectMatrix = Matrix.IdentityMatrix(4);
+            ozReflectMatrix[0, 0] = -1;
+			ozReflectMatrix[1, 1] = -1;
+            matrix = matrix * ozReflectMatrix;
+        }
+		
+        public void CReflect()
+        {
+            Matrix cReflectMatrix = Matrix.IdentityMatrix(4);
+            cReflectMatrix[0, 0] = -1;
+            cReflectMatrix[1, 1] = -1;
+			cReflectMatrix[2, 2] = -1;
+            matrix = matrix * cReflectMatrix;
+        }
+    }
 }
+

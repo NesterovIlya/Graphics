@@ -41,7 +41,9 @@
   <ItemGroup>
     <Compile Include="exception\DimentionMismatchException.cs" />
     <Compile Include="exception\MatrixException.cs" />
-    <Compile Include="Matrix.cs" />
+    <Compile Include="..\..\..\Lab2\Matrix.cs">
+      <Link>Matrix.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
