@@ -1,0 +1,9 @@
+D:\work\Graphics\Lab2\Lab2\bin\Debug\Lab2.exe.config
+D:\work\Graphics\Lab2\Lab2\bin\Debug\Lab2.exe
+D:\work\Graphics\Lab2\Lab2\bin\Debug\Lab2.pdb
+D:\work\Graphics\Lab2\Lab2\obj\Debug\Lab2.csprojResolveAssemblyReference.cache
+D:\work\Graphics\Lab2\Lab2\obj\Debug\Lab2.Form1.resources
+D:\work\Graphics\Lab2\Lab2\obj\Debug\Lab2.Properties.Resources.resources
+D:\work\Graphics\Lab2\Lab2\obj\Debug\Lab2.csproj.GenerateResource.Cache
+D:\work\Graphics\Lab2\Lab2\obj\Debug\Lab2.exe
+D:\work\Graphics\Lab2\Lab2\obj\Debug\Lab2.pdb
