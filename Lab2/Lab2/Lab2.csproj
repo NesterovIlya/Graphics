@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\GraphicEngine.cs" />
     <Compile Include="Matrix\Exception\DimentionMismatchException.cs" />
     <Compile Include="Matrix\Exception\MatrixException.cs" />
@@ -58,6 +60,8 @@
     </Compile>
     <Compile Include="Model\impl\polygon\Face.cs" />
     <Compile Include="Model\impl\polygon\PolygonModel.cs" />
+    <Compile Include="Model\impl\polygon\PolygonModelMock.cs" />
+    <Compile Include="Painter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

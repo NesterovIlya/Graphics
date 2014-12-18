@@ -35,15 +35,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(732, 527);
+            this.ClientSize = new System.Drawing.Size(684, 662);
             this.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.Name = "Form1";
             this.Text = "Лабораторная работа 2";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
     }
 }
 

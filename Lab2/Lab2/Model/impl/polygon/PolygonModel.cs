@@ -12,7 +12,8 @@ namespace Lab2.Model.impl
     {
         public string Name { get; private set; }
 
-        private Matrix _worldCoordinates;
+        public Matrix WorldCoordinates
+        {get; private set;}
 
         private List<Face> _faceList;
 

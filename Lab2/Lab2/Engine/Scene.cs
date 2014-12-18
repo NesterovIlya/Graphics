@@ -7,17 +7,13 @@ using Lab2.Model;
 
 namespace Lab2.Engine
 {
-    class Scene
+    public class Scene
     {
         private Dictionary<string, IModel> _objects;
 
         public Scene()
         {
             _objects = new Dictionary<string, IModel>();
-        }
-        public IModel GetModel(String name)
-        {
-            throw new NotImplementedException();
         }
 
         public void Add(IModel model)
@@ -28,6 +24,11 @@ namespace Lab2.Engine
         public bool GetModel(string name, out IModel model)
         {
             return _objects.TryGetValue(name,out model);
-        } 
+        }
+
+        public void Clear()
+        {
+            _objects.Clear();
+        }
     }
 }
