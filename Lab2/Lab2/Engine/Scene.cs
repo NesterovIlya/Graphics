@@ -21,9 +21,11 @@ namespace Lab2.Engine
             _objects.Add(model.Name, model);
         }
 
-        public bool GetModel(string name, out IModel model)
+        public IModel GetModel(string name)
         {
-            return _objects.TryGetValue(name,out model);
+            IModel model;
+            if (_objects.TryGetValue(name, out model)) return model;
+            else throw new KeyNotFoundException();
         }
 
         public void Clear()

@@ -50,9 +50,8 @@ namespace Lab2
         public void ReDraw(Bitmap bm)
         {
             Graphics g = Graphics.FromImage(bm);
-            IModel result;
-            GraphicEngine.Instance.Scene.GetModel("CubeMock", out result);
-            PolygonModelMock model = result as PolygonModelMock;
+            PolygonModelMock model = GraphicEngine.Instance.Scene.GetModel("CubeMock") as PolygonModelMock;
+
 
             Matrix printedMatrix = GraphicEngine.Instance.CurrentProjection;
             foreach (Face face in model.FaceList)

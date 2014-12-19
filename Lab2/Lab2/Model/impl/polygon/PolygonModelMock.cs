@@ -14,6 +14,12 @@ namespace Lab2.Model.impl.polygon
         public Matrix WorldCoordinates
         {get; private set;}
 
+        private Matrix _inputCoordinates;
+
+        public delegate void ModelChanged();
+
+        public event ModelChanged OnChange;
+
         public List<Face> FaceList
         { get; private set; }
 
@@ -32,7 +38,8 @@ namespace Lab2.Model.impl.polygon
                 0, 0, 0, 0,-1,-1,-1,-1,
                 1, 1, 1, 1, 1, 1, 1, 1
             };
-            WorldCoordinates = new Matrix(4, 8, vertexList);
+             _inputCoordinates = new Matrix(4, 8, vertexList);
+             WorldCoordinates = new Matrix(_inputCoordinates);
 
             int[] vertex; 
             Face face;
@@ -66,6 +73,12 @@ namespace Lab2.Model.impl.polygon
             face = new Face();
             face.AddRange(vertex);
             FaceList.Add(face);
+        }
+
+        public void ChangeModel(Matrix affineMatrix)
+        {
+            WorldCoordinates = affineMatrix * WorldCoordinates;
+            OnChange();
         }
     }
 }

@@ -232,9 +232,9 @@ namespace Lab2.MatrixLib
         public void Transfer(Double x, Double y, Double z)
         {
             Matrix transferMatrix = Matrix.IdentityMatrix(4);
-            transferMatrix[0, 2] = x;
-            transferMatrix[1, 2] = y;
-			transferMatrix[2, 2] = z;
+            transferMatrix[0, 3] = x;
+            transferMatrix[1, 3] = y;
+			transferMatrix[2, 3] = z;
             matrix = matrix*transferMatrix;
         }
 

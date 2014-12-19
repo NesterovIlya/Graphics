@@ -28,10 +28,15 @@ namespace Lab2.Engine
 
         private Matrix _projectionMatrix;
 
+        public delegate void ProjectionChanged();
+
+        public event ProjectionChanged OnProjectionChanged;
+
         private GraphicEngine()
         {
             Scene = new Scene();
             Camera = new Camera();
+            Camera.OnChange += CameraChangedHandler;
             _screenBasis = ScreenBasis.GetBasis(Camera);
             _transformingMatrix = Matrix.IdentityMatrix(4);
             ComputeTransformingMatrix();
@@ -44,9 +49,15 @@ namespace Lab2.Engine
             }
 
             PolygonModelMock pmm = new PolygonModelMock();
+            pmm.OnChange += ModelChangedHandler;
+
             Scene.Add(pmm);
+
+            //Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+            //builder.Transfer(-0.5, 0 , 0.5);
+            //Matrix affineMatrix = builder.GetAffineMatrix();
+
             CurrentProjection = _projectionMatrix * _transformingMatrix * pmm.WorldCoordinates;
-            int hg;
         }
 
         public static GraphicEngine Instance
@@ -77,9 +88,27 @@ namespace Lab2.Engine
             _transformingMatrix[2, 3] = -Vector3D.DotProduct(_screenBasis.J, (Vector3D)Camera.ScreenCenter);
         }
 
+        private void CameraChangedHandler()
+        {
+            _screenBasis = ScreenBasis.GetBasis(Camera);
+            _transformingMatrix = Matrix.IdentityMatrix(4);
+            ComputeTransformingMatrix();
 
+            PolygonModelMock cube = Scene.GetModel("CubeMock") as PolygonModelMock;
 
+            CurrentProjection = _projectionMatrix * _transformingMatrix * cube.WorldCoordinates;
 
+            OnProjectionChanged();
+        }
+
+        private void ModelChangedHandler()
+        {
+            PolygonModelMock cube = Scene.GetModel("CubeMock") as PolygonModelMock;
+
+            CurrentProjection = _projectionMatrix * _transformingMatrix * cube.WorldCoordinates;
+
+            OnProjectionChanged();
+        }
 
         private class ScreenBasis
         {
