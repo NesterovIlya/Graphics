@@ -23,9 +23,9 @@ namespace Lab2.Engine
 
         public Camera()
         {
-            Position = new Point3D(0, 0, 2);
+            Position = new Point3D(2, 4, 2);
             Orientation = new Vector3D(0, 1, 0);
-            ScreenCenter = new Point3D(0, 0, 1);
+            ScreenCenter = new Point3D(1, 2, 1);
             ComputeNormal();
         }
 

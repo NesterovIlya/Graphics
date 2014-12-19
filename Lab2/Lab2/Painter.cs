@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using Lab2.MatrixLib;
+using Lab2.Model.impl.polygon;
+using Lab2.Model;
+using Lab2.Engine;
 
 namespace Lab2
 {
@@ -44,27 +47,23 @@ namespace Lab2
             return (int)((T - y) / (T - B) * WindowSizeY);
         }
 
-        public void ReDraw(Bitmap bm, Matrix printedMatrix)
+        public void ReDraw(Bitmap bm)
         {
             Graphics g = Graphics.FromImage(bm);
+            IModel result;
+            GraphicEngine.Instance.Scene.GetModel("CubeMock", out result);
+            PolygonModelMock model = result as PolygonModelMock;
 
-
-            for (int i = 0; i < printedMatrix.ColSize;i++)
+            Matrix printedMatrix = GraphicEngine.Instance.CurrentProjection;
+            foreach (Face face in model.FaceList)
             {
-                g.DrawEllipse(
-                    new Pen(Color.Black, 1f),
-                    new Rectangle(
-                        new Point(XFromDec(printedMatrix[0, i] - 0.1), YFromDec(printedMatrix[1, i] + 0.1)),
-                        new Size(2, 2)));
-
+                List<Point> points = new List<Point>();
+                foreach (int pointNumber in face.Points)
+                {
+                    points.Add(new Point(XFromDec(printedMatrix[0,pointNumber]),YFromDec(printedMatrix[1,pointNumber])));
+                }
+                g.DrawPolygon(new Pen(Color.Black, 1.0f),points.ToArray());
             }
-            /*for (int i = 0; i < adjacencyMatrix.ColSize; i++)
-            {
-                g.DrawLine(
-                           new Pen(Color.Red, 3.0f),
-                           new Point(XFromDec(printedMatrix[0, (int)adjacencyMatrix[0, i] - 1]), YFromDec(printedMatrix[1, (int)adjacencyMatrix[0, i] - 1])),
-                           new Point(XFromDec(printedMatrix[0, (int)adjacencyMatrix[1, i] - 1]), YFromDec(printedMatrix[1, (int)adjacencyMatrix[1, i] - 1])));
-            }*/
         }
 
         public void DrawAxis(Bitmap bm)

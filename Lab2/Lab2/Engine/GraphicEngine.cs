@@ -46,6 +46,7 @@ namespace Lab2.Engine
             PolygonModelMock pmm = new PolygonModelMock();
             Scene.Add(pmm);
             CurrentProjection = _projectionMatrix * _transformingMatrix * pmm.WorldCoordinates;
+            int hg;
         }
 
         public static GraphicEngine Instance

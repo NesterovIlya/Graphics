@@ -23,7 +23,7 @@ namespace Lab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            painter = new Painter(-5, 5, -5, 5, this.ClientSize.Width, this.ClientSize.Height);
+            painter = new Painter(-2, 2, -2, 2, this.ClientSize.Width, this.ClientSize.Height);
             DrawForm();
         }
 
@@ -31,7 +31,7 @@ namespace Lab2
         {
             GraphicEngine gr = GraphicEngine.Instance;
             Bitmap bm = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
-            painter.ReDraw(bm, gr.CurrentProjection);
+            painter.ReDraw(bm);
             this.BackgroundImage = bm;
         }
     }

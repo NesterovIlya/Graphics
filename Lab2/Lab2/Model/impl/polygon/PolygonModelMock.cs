@@ -26,7 +26,12 @@ namespace Lab2.Model.impl.polygon
 
         private void Init()
         {
-            List<double> vertexList = new List<double>(){0,0,1,1,0,0,1,1,0,1,1,0,0,1,1,0,0,0,0,0,-1,-1,-1,-1,1,1,1,1,1,1,1,1};
+            List<double> vertexList = new List<double>(){
+                0, 0, 1, 1, 0, 0, 1, 1,
+                0, 1, 1, 0, 0, 1, 1, 0,
+                0, 0, 0, 0,-1,-1,-1,-1,
+                1, 1, 1, 1, 1, 1, 1, 1
+            };
             WorldCoordinates = new Matrix(4, 8, vertexList);
 
             int[] vertex; 

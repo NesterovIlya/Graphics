@@ -8,31 +8,32 @@ namespace Lab2.Model.impl.polygon
 {
     public class Face
     {
-        private List<int> _points;
+        public List<int> Points
+        { get; set; }
 
         public Face()
         {
-            _points = new List<int>();
+            Points = new List<int>();
         }
 
         public void Add(int pointNumber)
         {
-            _points.Add(pointNumber);
+            Points.Add(pointNumber);
         }
 
         public void AddRange(int[] pointNumbers)
         {
-            _points.AddRange(pointNumbers);
+            Points.AddRange(pointNumbers);
         }
 
         public bool Remove(int point)
         {
-            return _points.Remove(point);
+            return Points.Remove(point);
         }
 
         public void RemoveAt(int index)
         {
-            _points.RemoveAt(index);
+            Points.RemoveAt(index);
         }
 
     }
