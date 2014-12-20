@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lab2.MatrixLib;
 
 namespace Lab2.Model
 {
@@ -10,5 +11,10 @@ namespace Lab2.Model
     {
         string Name
         { get; }
+
+        Matrix WorldCoordinates
+        { get; }
+
+        void ChangeModel(Matrix affineMatrix);
     }
 }

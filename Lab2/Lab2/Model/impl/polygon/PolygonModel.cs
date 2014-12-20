@@ -17,6 +17,10 @@ namespace Lab2.Model.impl
 
         private List<Face> _faceList;
 
+        public delegate void ModelChanged();
+
+        public event ModelChanged OnChange;
+
         public PolygonModel()
         {
             _faceList = new List<Face>();
@@ -43,6 +47,12 @@ namespace Lab2.Model.impl
         public void Clear()
         {
             _faceList.Clear();
+        }
+
+        public void ChangeModel(Matrix affineMatrix)
+        {
+            WorldCoordinates = affineMatrix * WorldCoordinates;
+            OnChange();
         }
 
         

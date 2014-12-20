@@ -15,6 +15,9 @@ namespace Lab2.Engine
         public Vector3D Orientation
         { get; private set; }
 
+        public double DistanceToScreen
+        { get; private set; }
+
         public Point3D ScreenCenter
         { get; private set; }
 
@@ -27,42 +30,65 @@ namespace Lab2.Engine
 
         public Camera()
         {
-            Position = new Point3D(2, 2, 2);
+            Position = new Point3D(1, 2, 3);
             Orientation = new Vector3D(1, 0, 0);
-            ScreenCenter = new Point3D(1, 1, 1);
-            ComputeNormal();
+            Normal = (Vector3D)Position;
+            DistanceToScreen = 1;
         }
 
-        public Camera(Point3D position, Vector3D orientation, Point3D screenCenter)
+        public Camera(Point3D position, Vector3D orientation, Vector3D normal, double distanceToScreen)
         {
             Position = position;
             Orientation = orientation;
-            ScreenCenter = screenCenter;
-            ComputeNormal();
+            Normal = normal;
+            DistanceToScreen = distanceToScreen;
         }
 
-        public void ChangeParams(Point3D position, Point3D screenCenter)
+        public void ChangeParams(Point3D position)
         {
             Position = position;
-            ScreenCenter = screenCenter;
-            ComputeNormal();
             OnChange();
         }
 
-        public void ChangeParams(Point3D position, Vector3D orientation, Point3D screenCenter)
+        public void ChangeParams(Vector3D normal)
+        {
+            Normal = normal;
+            OnChange();
+        }
+
+        public void ChangeParams(double distanceToScreen)
+        {
+            DistanceToScreen = distanceToScreen;
+            OnChange();
+        }
+
+        public void ChangeParams(Point3D position, Vector3D normal)
+        {
+            Position = position;
+            Normal = normal;
+            OnChange();
+        }
+
+        public void ChangeParams(Point3D position, Vector3D normal, double distanceToScreen)
+        {
+            Position = position;
+            Normal = normal;
+            DistanceToScreen = distanceToScreen;
+            OnChange();
+        }
+
+        public void ChangeParams(Point3D position, Vector3D orientation, Vector3D normal, double distanceToScreen)
         {
             Position = position;
             Orientation = orientation;
-            ScreenCenter = screenCenter;
-            ComputeNormal();
+            Normal = normal;
+            DistanceToScreen = distanceToScreen;
             OnChange();
         }
 
-        private void ComputeNormal()
+        private void ComputeScreenCenter()
         {
-            Normal = Position-ScreenCenter;
+            ScreenCenter = Position - Normal;
         }
-
-
     }
 }

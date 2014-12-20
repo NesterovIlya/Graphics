@@ -53,10 +53,6 @@ namespace Lab2.Engine
 
             Scene.Add(pmm);
 
-            //Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
-            //builder.Transfer(-0.5, 0 , 0.5);
-            //Matrix affineMatrix = builder.GetAffineMatrix();
-
             CurrentProjection = _projectionMatrix * _transformingMatrix * pmm.WorldCoordinates;
         }
 
@@ -94,18 +90,18 @@ namespace Lab2.Engine
             _transformingMatrix = Matrix.IdentityMatrix(4);
             ComputeTransformingMatrix();
 
-            PolygonModelMock cube = Scene.GetModel("CubeMock") as PolygonModelMock;
+            IModel model = Scene.GetModel("CubeMock");
 
-            CurrentProjection = _projectionMatrix * _transformingMatrix * cube.WorldCoordinates;
+            CurrentProjection = _projectionMatrix * _transformingMatrix * model.WorldCoordinates;
 
             OnProjectionChanged();
         }
 
         private void ModelChangedHandler()
         {
-            PolygonModelMock cube = Scene.GetModel("CubeMock") as PolygonModelMock;
+            IModel model = Scene.GetModel("CubeMock"); ;
 
-            CurrentProjection = _projectionMatrix * _transformingMatrix * cube.WorldCoordinates;
+            CurrentProjection = _projectionMatrix * _transformingMatrix * model.WorldCoordinates;
 
             OnProjectionChanged();
         }

@@ -13,10 +13,15 @@ namespace Lab2
 {
     class Painter
     {
-        private double L;
-        private double R;
-        private double B;
-        private double T;
+        public double L
+        { get; private set; }
+        public double R
+        { get; private set; }
+        public double B
+        { get; private set; }
+        public double T
+        { get; private set; }
+
         private int WindowSizeX;
         private int WindowSizeY;
 
