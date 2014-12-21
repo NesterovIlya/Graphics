@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="Model\impl\polygon\Face.cs" />
     <Compile Include="Model\impl\polygon\PolygonModel.cs" />
-    <Compile Include="Model\impl\polygon\PolygonModelMock.cs" />
+    <Compile Include="Model\impl\polygon\CubeMock.cs" />
     <Compile Include="Painter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

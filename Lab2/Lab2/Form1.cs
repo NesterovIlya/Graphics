@@ -35,13 +35,14 @@ namespace Lab2
             GraphicEngine gr = GraphicEngine.Instance;
             _scene = gr.Scene;
             _camera = gr.Camera;
+            textBox1.Text = _camera.Position.X.ToString() +" " + _camera.Position.Y.ToString() + " " + _camera.Position.Z.ToString();
             gr.OnProjectionChanged += OnProjectionChangedHandler;
             DrawForm();
             Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
             builder.Transfer(-0.5, -0.5, 0.5);
             Matrix affineMatrix = builder.GetAffineMatrix();
 
-            PolygonModelMock model = _scene.GetModel("CubeMock") as PolygonModelMock;
+            CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
             model.ChangeModel(affineMatrix);
         }
 
@@ -54,30 +55,8 @@ namespace Lab2
 
         private void OnProjectionChangedHandler()
         {
+            textBox1.Text = _camera.Position.X.ToString() + " " + _camera.Position.Y.ToString() + " " + _camera.Position.Z.ToString();
             DrawForm();
-        }
-
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {
-            _mouseIsDown = true;
-            _prevCoordinates = new Point3D(XFromScreen(e.X),YFromScreen(e.Y),0);
-        }
-
-        private void Form1_MouseUp(object sender, MouseEventArgs e)
-        {
-            _mouseIsDown = false;
-        }
-
-        private void Canvas_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (!_mouseIsDown) return;
-
-            Point3D currentCoordinates = new Point3D(XFromScreen(e.X), YFromScreen(e.Y),0);
-
-            Vector3D transferPosition = currentCoordinates - _prevCoordinates;
-            _prevCoordinates = currentCoordinates;
-
-            //Point3D newPosition = new Point3D(_camera.Position);
         }
 
         private double XFromScreen(int x)
@@ -88,6 +67,54 @@ namespace Lab2
         private double YFromScreen(int y)
         {
             return (double)y * (_painter.T - _painter.B) / Canvas.Height - _painter.T;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    {
+                        Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+                        builder.RotateOX(-Math.PI / 20);
+                        Matrix affineMatrix = builder.GetAffineMatrix();
+
+                        CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
+                        model.ChangeModel(affineMatrix);
+
+                        break;
+                    }
+                case Keys.Right:
+                    {
+                        Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+                        builder.RotateOX(Math.PI / 20);
+                        Matrix affineMatrix = builder.GetAffineMatrix();
+
+                        CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
+                        model.ChangeModel(affineMatrix);
+                        break;
+                    }
+                case Keys.Up:
+                    {
+                        Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+                        builder.RotateOY(-Math.PI / 20);
+                        Matrix affineMatrix = builder.GetAffineMatrix();
+
+                        CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
+                        model.ChangeModel(affineMatrix);
+                        break;
+                    }
+                case Keys.Down:
+                    {
+                        Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+                        builder.RotateOY(Math.PI / 20);
+                        Matrix affineMatrix = builder.GetAffineMatrix();
+
+                        CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
+                        model.ChangeModel(affineMatrix);
+                        break;
+                    }
+            }
         }
 
 

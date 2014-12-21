@@ -22,6 +22,9 @@ namespace Lab2.Engine
         public Matrix CurrentProjection
         { get; private set; }
 
+        public Matrix Axis
+        { get; private set; }
+
         private ScreenBasis _screenBasis;
 
         private Matrix _transformingMatrix;
@@ -48,12 +51,13 @@ namespace Lab2.Engine
                 _projectionMatrix[2, 3] = 1;
             }
 
-            PolygonModelMock pmm = new PolygonModelMock();
+            CubeMock pmm = new CubeMock();
             pmm.OnChange += ModelChangedHandler;
 
             Scene.Add(pmm);
 
             CurrentProjection = _projectionMatrix * _transformingMatrix * pmm.WorldCoordinates;
+            ComputeAxisProjection();
         }
 
         public static GraphicEngine Instance
@@ -93,7 +97,7 @@ namespace Lab2.Engine
             IModel model = Scene.GetModel("CubeMock");
 
             CurrentProjection = _projectionMatrix * _transformingMatrix * model.WorldCoordinates;
-
+            ComputeAxisProjection();
             OnProjectionChanged();
         }
 
@@ -133,6 +137,18 @@ namespace Lab2.Engine
                 Vector3D j = Vector3D.CrossProduct(k,i);
                 return new ScreenBasis(i,j,k);
             }
+        }
+
+        public void ComputeAxisProjection()
+        {
+            List<double> matrixElem = new List<double>(){
+                0, 100,   0,   0,
+                0,   0, 100,   0,
+                0,   0,   0, 100,
+                1,   1,   1,   1
+            };
+            Matrix axisMatrix = new Matrix(4,4,matrixElem);
+            Axis = _projectionMatrix * _transformingMatrix * axisMatrix;
         }
     }
 }

@@ -30,10 +30,11 @@ namespace Lab2.Engine
 
         public Camera()
         {
-            Position = new Point3D(1, 2, 3);
+            Position = new Point3D(2, 2, 2);
             Orientation = new Vector3D(1, 0, 0);
             Normal = (Vector3D)Position;
             DistanceToScreen = 1;
+            ComputeScreenCenter();
         }
 
         public Camera(Point3D position, Vector3D orientation, Vector3D normal, double distanceToScreen)
@@ -42,17 +43,21 @@ namespace Lab2.Engine
             Orientation = orientation;
             Normal = normal;
             DistanceToScreen = distanceToScreen;
+            DistanceToScreen = 1;
+            ComputeScreenCenter();
         }
 
         public void ChangeParams(Point3D position)
         {
             Position = position;
+            ComputeScreenCenter();
             OnChange();
         }
 
         public void ChangeParams(Vector3D normal)
         {
             Normal = normal;
+            ComputeScreenCenter();
             OnChange();
         }
 
@@ -66,6 +71,7 @@ namespace Lab2.Engine
         {
             Position = position;
             Normal = normal;
+            ComputeScreenCenter();
             OnChange();
         }
 
@@ -74,6 +80,7 @@ namespace Lab2.Engine
             Position = position;
             Normal = normal;
             DistanceToScreen = distanceToScreen;
+            ComputeScreenCenter();
             OnChange();
         }
 
@@ -83,6 +90,7 @@ namespace Lab2.Engine
             Orientation = orientation;
             Normal = normal;
             DistanceToScreen = distanceToScreen;
+            ComputeScreenCenter();
             OnChange();
         }
 

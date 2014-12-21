@@ -7,7 +7,7 @@ using Lab2.MatrixLib;
 
 namespace Lab2.Model.impl.polygon
 {
-    public class PolygonModelMock : IModel
+    public class CubeMock : IModel
     {
         public string Name { get; private set; }
 
@@ -23,7 +23,7 @@ namespace Lab2.Model.impl.polygon
         public List<Face> FaceList
         { get; private set; }
 
-        public PolygonModelMock()
+        public CubeMock()
         {
             FaceList = new List<Face>();
             Name = "CubeMock";

@@ -54,8 +54,10 @@ namespace Lab2
 
         public void ReDraw(Bitmap bm)
         {
+            DrawAxis(bm);
             Graphics g = Graphics.FromImage(bm);
-            PolygonModelMock model = GraphicEngine.Instance.Scene.GetModel("CubeMock") as PolygonModelMock;
+
+            CubeMock model = GraphicEngine.Instance.Scene.GetModel("CubeMock") as CubeMock;
 
 
             Matrix printedMatrix = GraphicEngine.Instance.CurrentProjection;
@@ -66,21 +68,28 @@ namespace Lab2
                 {
                     points.Add(new Point(XFromDec(printedMatrix[0,pointNumber]),YFromDec(printedMatrix[1,pointNumber])));
                 }
-                g.DrawPolygon(new Pen(Color.Black, 1.0f),points.ToArray());
+                g.DrawPolygon(new Pen(Color.Brown, 2.0f),points.ToArray());
             }
         }
 
-        public void DrawAxis(Bitmap bm)
+        private void DrawAxis(Bitmap bm)
         {
             Graphics g = Graphics.FromImage(bm);
+
+            Matrix axisMatrix = GraphicEngine.Instance.Axis;
+
             g.DrawLine(
                             new Pen(Color.Black, 1.0f),
-                            new Point(WindowSizeX / 2, 0),
-                            new Point(WindowSizeX / 2, WindowSizeY));
+                            new Point(XFromDec(axisMatrix[0,0]),YFromDec(axisMatrix[1,0])),
+                            new Point(XFromDec(axisMatrix[0,1]), YFromDec(axisMatrix[1,1])));
             g.DrawLine(
                             new Pen(Color.Black, 1.0f),
-                            new Point(0, WindowSizeY / 2),
-                            new Point(WindowSizeX, WindowSizeY / 2));
+                            new Point(XFromDec(axisMatrix[0,0]), YFromDec(axisMatrix[1,0])),
+                            new Point(XFromDec(axisMatrix[0,2]), YFromDec(axisMatrix[1,2])));
+            g.DrawLine(
+                            new Pen(Color.Black, 1.0f),
+                            new Point(XFromDec(axisMatrix[0,0]), YFromDec(axisMatrix[1,0])),
+                            new Point(XFromDec(axisMatrix[0,3]), YFromDec(axisMatrix[1,3])));
         }
     }
 }

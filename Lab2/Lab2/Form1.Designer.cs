@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.Canvas = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Canvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +41,15 @@
             this.Canvas.Size = new System.Drawing.Size(660, 660);
             this.Canvas.TabIndex = 0;
             this.Canvas.TabStop = false;
-            this.Canvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseMove);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(13, 679);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             // 
             // Form1
             // 
@@ -48,23 +57,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 688);
+            this.ClientSize = new System.Drawing.Size(684, 726);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Canvas);
             this.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Лабораторная работа 2";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.Canvas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox Canvas;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }
