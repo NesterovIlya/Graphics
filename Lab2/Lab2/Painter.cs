@@ -57,7 +57,7 @@ namespace Lab2
             DrawAxis(bm);
             Graphics g = Graphics.FromImage(bm);
 
-            CubeMock model = GraphicEngine.Instance.Scene.GetModel("CubeMock") as CubeMock;
+            PyramideMock model = GraphicEngine.Instance.Scene.GetModel("PyramideMock") as PyramideMock;
 
 
             Matrix printedMatrix = GraphicEngine.Instance.CurrentProjection;

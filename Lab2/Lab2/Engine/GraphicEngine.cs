@@ -51,12 +51,12 @@ namespace Lab2.Engine
                 _projectionMatrix[2, 3] = 1;
             }
 
-            CubeMock pmm = new CubeMock();
-            pmm.OnChange += ModelChangedHandler;
+            PyramideMock pyr = new PyramideMock();
+            pyr.OnChange += ModelChangedHandler;
 
-            Scene.Add(pmm);
+            Scene.Add(pyr);
 
-            CurrentProjection = _projectionMatrix * _transformingMatrix * pmm.WorldCoordinates;
+            CurrentProjection = _projectionMatrix * _transformingMatrix * pyr.WorldCoordinates;
             ComputeAxisProjection();
         }
 
@@ -94,7 +94,7 @@ namespace Lab2.Engine
             _transformingMatrix = Matrix.IdentityMatrix(4);
             ComputeTransformingMatrix();
 
-            IModel model = Scene.GetModel("CubeMock");
+            IModel model = Scene.GetModel("PyramideMock");
 
             CurrentProjection = _projectionMatrix * _transformingMatrix * model.WorldCoordinates;
             ComputeAxisProjection();
@@ -103,7 +103,7 @@ namespace Lab2.Engine
 
         private void ModelChangedHandler()
         {
-            IModel model = Scene.GetModel("CubeMock"); ;
+            IModel model = Scene.GetModel("PyramideMock"); ;
 
             CurrentProjection = _projectionMatrix * _transformingMatrix * model.WorldCoordinates;
 
@@ -142,9 +142,9 @@ namespace Lab2.Engine
         public void ComputeAxisProjection()
         {
             List<double> matrixElem = new List<double>(){
-                0, 100,   0,   0,
-                0,   0, 100,   0,
-                0,   0,   0, 100,
+                0, 200,   0,   0,
+                0,   0, 200,   0,
+                0,   0,   0, 200,
                 1,   1,   1,   1
             };
             Matrix axisMatrix = new Matrix(4,4,matrixElem);

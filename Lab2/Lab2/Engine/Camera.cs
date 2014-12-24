@@ -43,7 +43,6 @@ namespace Lab2.Engine
             Orientation = orientation;
             Normal = normal;
             DistanceToScreen = distanceToScreen;
-            DistanceToScreen = 1;
             ComputeScreenCenter();
         }
 

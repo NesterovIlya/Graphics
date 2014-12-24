@@ -20,9 +20,6 @@ namespace Lab2
         private Scene _scene;
         private Lab2.Engine.Camera _camera;
 
-        private bool _mouseIsDown = false;
-
-        private Point3D _prevCoordinates;
 
         public Form1()
         {
@@ -35,15 +32,8 @@ namespace Lab2
             GraphicEngine gr = GraphicEngine.Instance;
             _scene = gr.Scene;
             _camera = gr.Camera;
-            textBox1.Text = _camera.Position.X.ToString() +" " + _camera.Position.Y.ToString() + " " + _camera.Position.Z.ToString();
             gr.OnProjectionChanged += OnProjectionChangedHandler;
             DrawForm();
-            Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
-            builder.Transfer(-0.5, -0.5, 0.5);
-            Matrix affineMatrix = builder.GetAffineMatrix();
-
-            CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
-            model.ChangeModel(affineMatrix);
         }
 
         private void DrawForm()
@@ -55,7 +45,6 @@ namespace Lab2
 
         private void OnProjectionChangedHandler()
         {
-            textBox1.Text = _camera.Position.X.ToString() + " " + _camera.Position.Y.ToString() + " " + _camera.Position.Z.ToString();
             DrawForm();
         }
 
@@ -69,52 +58,44 @@ namespace Lab2
             return (double)y * (_painter.T - _painter.B) / Canvas.Height - _painter.T;
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.Left:
-                    {
-                        Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
-                        builder.RotateOX(-Math.PI / 20);
-                        Matrix affineMatrix = builder.GetAffineMatrix();
+            Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+            builder.Scale(1.1, 1.1, 1.1);
+            Matrix affineMatrix = builder.GetAffineMatrix();
 
-                        CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
-                        model.ChangeModel(affineMatrix);
+            PyramideMock model = _scene.GetModel("PyramideMock") as PyramideMock;
+            model.ChangeModel(affineMatrix);
+        }
 
-                        break;
-                    }
-                case Keys.Right:
-                    {
-                        Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
-                        builder.RotateOX(Math.PI / 20);
-                        Matrix affineMatrix = builder.GetAffineMatrix();
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+            builder.Scale(0.9, 0.9, 0.9);
+            Matrix affineMatrix = builder.GetAffineMatrix();
 
-                        CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
-                        model.ChangeModel(affineMatrix);
-                        break;
-                    }
-                case Keys.Up:
-                    {
-                        Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
-                        builder.RotateOY(-Math.PI / 20);
-                        Matrix affineMatrix = builder.GetAffineMatrix();
+            PyramideMock model = _scene.GetModel("PyramideMock") as PyramideMock;
+            model.ChangeModel(affineMatrix);
+        }
 
-                        CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
-                        model.ChangeModel(affineMatrix);
-                        break;
-                    }
-                case Keys.Down:
-                    {
-                        Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
-                        builder.RotateOY(Math.PI / 20);
-                        Matrix affineMatrix = builder.GetAffineMatrix();
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+            builder.RotateOX(-Math.PI / 20);
+            Matrix affineMatrix = builder.GetAffineMatrix();
 
-                        CubeMock model = _scene.GetModel("CubeMock") as CubeMock;
-                        model.ChangeModel(affineMatrix);
-                        break;
-                    }
-            }
+            PyramideMock model = _scene.GetModel("PyramideMock") as PyramideMock;
+            model.ChangeModel(affineMatrix);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Affine4DimMatrixBuilder builder = new Affine4DimMatrixBuilder();
+            builder.YOZReflect();
+            Matrix affineMatrix = builder.GetAffineMatrix();
+
+            PyramideMock model = _scene.GetModel("PyramideMock") as PyramideMock;
+            model.ChangeModel(affineMatrix);
         }
 
 
