@@ -66,7 +66,7 @@ namespace Lab2
                 List<Point> points = new List<Point>();
                 foreach (int pointNumber in face.Points)
                 {
-                    points.Add(new Point(XFromDec(printedMatrix[0,pointNumber]),YFromDec(printedMatrix[1,pointNumber])));
+                    points.Add(new Point(XFromDec(printedMatrix[0, pointNumber]), YFromDec(printedMatrix[1, pointNumber])));
                 }
                 g.DrawPolygon(new Pen(Color.Brown, 2.0f),points.ToArray());
             }

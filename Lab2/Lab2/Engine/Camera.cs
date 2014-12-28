@@ -30,10 +30,10 @@ namespace Lab2.Engine
 
         public Camera()
         {
-            Position = new Point3D(2, 2, 2);
+            Position = new Point3D(6, 6, 6);
             Orientation = new Vector3D(1, 0, 0);
             Normal = (Vector3D)Position;
-            DistanceToScreen = 1;
+            DistanceToScreen = 2;
             ComputeScreenCenter();
         }
 
@@ -95,7 +95,9 @@ namespace Lab2.Engine
 
         private void ComputeScreenCenter()
         {
-            ScreenCenter = Position - Normal;
+            double koef = DistanceToScreen/Normal.Length;
+            Vector3D vec = new Vector3D(koef * Normal.X, koef * Normal.Y, koef*Normal.Z);
+            ScreenCenter = Position - vec;
         }
     }
 }

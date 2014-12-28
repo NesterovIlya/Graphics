@@ -48,8 +48,10 @@ namespace Lab2.Engine
             {
                 _projectionMatrix[0, 0] = 1;
                 _projectionMatrix[1, 1] = 1;
+                _projectionMatrix[2, 2] = -1 / Camera.DistanceToScreen;
                 _projectionMatrix[2, 3] = 1;
             }
+
 
             PyramideMock pyr = new PyramideMock();
             pyr.OnChange += ModelChangedHandler;
@@ -57,6 +59,14 @@ namespace Lab2.Engine
             Scene.Add(pyr);
 
             CurrentProjection = _projectionMatrix * _transformingMatrix * pyr.WorldCoordinates;
+            for (int i = 0; i < CurrentProjection.ColSize; i++)
+            {
+                if (CurrentProjection[2, i] != 0)
+                {
+                    CurrentProjection[0, i] = CurrentProjection[0, i] / CurrentProjection[2, i];
+                    CurrentProjection[1, i] = CurrentProjection[1, i] / CurrentProjection[2, i];
+                }
+            }
             ComputeAxisProjection();
         }
 
@@ -97,6 +107,16 @@ namespace Lab2.Engine
             IModel model = Scene.GetModel("PyramideMock");
 
             CurrentProjection = _projectionMatrix * _transformingMatrix * model.WorldCoordinates;
+
+            for (int i = 0; i < CurrentProjection.ColSize; i++)
+            {
+                if (CurrentProjection[2, i] != 0)
+                {
+                    CurrentProjection[0, i] = CurrentProjection[0, i] / CurrentProjection[2, i];
+                    CurrentProjection[1, i] = CurrentProjection[1, i] / CurrentProjection[2, i];
+                }
+            }
+
             ComputeAxisProjection();
             OnProjectionChanged();
         }
@@ -106,6 +126,15 @@ namespace Lab2.Engine
             IModel model = Scene.GetModel("PyramideMock"); ;
 
             CurrentProjection = _projectionMatrix * _transformingMatrix * model.WorldCoordinates;
+
+            for (int i = 0; i < CurrentProjection.ColSize; i++)
+            {
+                if (CurrentProjection[2, i] != 0)
+                {
+                    CurrentProjection[0, i] = CurrentProjection[0, i] / CurrentProjection[2, i];
+                    CurrentProjection[1, i] = CurrentProjection[1, i] / CurrentProjection[2, i];
+                }
+            }
 
             OnProjectionChanged();
         }
